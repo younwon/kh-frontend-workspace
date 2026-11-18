@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array</title>
+    <style>
+        .area{
+            width: 500px;
+            height: 150;
+            border: 1px solid palevioletred;
+        }
+    </style>
+</head>
+<body>
+    <h1>배열</h1>
+    <pre>
+        자바에서 배열이란 => 자료구조
+
+        여러 개의 값을 담는 자료형 => List
+
+        const arr = [];
+    </pre>
+
+    <div id="area1" class="area"></div>
+    <button onclick="printBird()">클릭</button>
+
+    <script>
+        function printBird(){
+            const arr = ['홍길동', 15, true, [1,2]];
+
+            console.log(arr);
+            console.log(arr[0]);
+            console.log(arr[3][1]);
+
+            const area = document.querySelector("#area1");
+
+            // for (let i = 0; i < arr.length; i++){
+            //     area.innerHTML += `${arr[i]}<br>`;
+            // }
+
+            // for(let i in arr){
+            //     console.log(i);
+            //     area.innerHTML += `${arr[i]}<br>`;
+            // }
+            // for(let e of arr){
+            //     area.innerHTML += `${e}<br>`;
+            // }
+            area.innerHTML = arr.map((e) => `${e}<br>`).join("");
+            //자바 람다랑 똑같음 람다
+        }
+    </script>
+
+    <hr>
+
+    <h3>배열의 요소 추가 / 제거</h3>
+
+    <button onclick="addEl()">요소 추가</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function addEl(){
+            const arr1 = [];          //권장
+            const arr2 = new Array(); //비권장
+            // console.log(arr1);
+            // console.log(arr2);
+
+            arr1[0] = "당근";
+            arr1.push('사과');
+            arr1.unshift("바나나");
+            arr1.push("수박");
+            console.log(arr1);
+            const num = parseInt(Math.random() * arr1.length);
+            alert(`오늘의 아침은 ${arr1[num]}입니다`);
+
+            alert(arr1.pop());
+            alert(arr1.shift());
+
+            const area2 = document.querySelector("#area2");
+        }
+    </script>
+
+    <hr>
+
+    <div id="area3" class="area"></div>
+    <button onclick="holiday()">빨간날찾기</button>
+
+    <script>
+        function holiday(){
+            const days = ['어린이날', '부처님오신날', '크리스마스', '현충일', '삼일절', '광복절', '개천절', '한글날', '설날', '추석'];
+    
+            const day = prompt("어떤날을 찾으시나요?");
+            // const abc = days.filter((e) => e == day);
+            // console.log(abc);
+            // console.log(days.indexOf(day))
+            console.log(days.includes(day))
+        }
+    </script>
+
+    <hr>
+
+    <button onclick="syntax()">F12 콘솔창을 보세요</button>
+
+    <script>
+        function syntax(){
+            console.log('a' == 'a'); //t
+            console.log(1 == '1'); //t
+            console.log([] == 0); //t
+            // == 이거는 비권장
+
+            console.log('1' === 1);
+
+            const fruits = ['apple', 'banana', 'charry'];
+
+            const [e1, e2, e3] = fruits;
+            console.log(e1, e2, e3);
+
+            const fruit = ["Durian", "Eggfruit"]
+            const arr = [...fruits, ...fruit]; //새로운 배열을 만들어서 합치기
+            console.log(arr);
+
+            console.log("-------------------------------------------")
+            const nums = [1,2,3,4,5];
+            const nums2 = nums.map(function(e) {
+                return e + 1;
+            });
+            console.log(nums2);
+            const nums3 = nums.map((e) => {
+                return e + 1;
+            });
+            console.log(nums3);
+            const nums4 = nums.map((e) => e + 1);
+            console.log(nums4);
+
+            const filters = nums.filter((e) => e % 2 != 0).map((e) => e+1);
+            console.log(filters);
+        }
+    </script>
+
+    <h3>정렬</h3>
+
+    <button onclick="sort()">정렬</button>
+
+    <script>
+        function sort(){
+            const arr = ['Banana', '용과','lemon', 'apple', '망고', '수박'];
+            console.log(arr);
+            const b = arr.toSorted(); //원본은 그대로 두고 정렬된 새로운 배열을 반환 (Mutable하지 않음)
+            console.log(b);
+            arr.sort(); //원본 배열을 정렬 (Mutable함)
+            console.log(arr);
+            arr.reverse(); //원본 배열을 뒤집음
+            console.log(arr);
+        }
+    </script>
+
+    <div id="area5" class="area"></div>
+    <button onclick="join()">버튼</button>
+
+    <script>
+        function join(){
+            const area = document.querySelector("#area5");
+            const arr = ['홍길동', '고길동', '장구', '도라에', '보노보노'];
+
+            // area.innerHTML = arr;
+
+            area.innerHTML = arr.map(n => `<div class="name">이름 ${n}</div>`).join("중간에 들어갈 내용");
+        }
+    </script>
+</body>
+</html>

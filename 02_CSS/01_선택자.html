@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <style>
+        /*CSS 영역*/
+        /*CSS의 주석*/
+
+        *{
+            color: blue;
+        }
+
+        pre {
+            color:green;
+        }
+
+        #pre-3{
+            color:brown;
+        }
+
+        .class-1{
+            color:blueviolet;
+        }
+
+        .class-2{
+            color:orange;
+        }
+
+    </style>
+</head>
+<body>
+    <pre>
+        CSS(Cascading Style Sheets)
+        HTML요소를 어떻게 보이게 할건지 지정하는 언어
+        (색, 크기, 위치, 간격, 폰트, 애니메이션 등 전부~~)
+
+        초창기에는 HTML에 스타일을 직접 기술
+        => 구조(의미)랑 모양이 섞여서 유지보수 지옥 / 그래서 분리함
+
+        HTML : 구조 / CSS : 모양 / JS : 동작
+    </pre>
+
+    <h1>선택자(Selector)</h1>
+
+    <p>
+        문서상 "어떤 요소"에 스타일을 입힐지 고르는 문법 <br>
+        선택자로 원하는 요소만 골라서 스타일 부여
+    </p>
+    <!--인라인방식-->
+    <div style="color:skyblue">옛날 방식</div>
+
+    <h3>1. 전체 선택자</h3>
+    <pre>
+        *{
+            스타일속성 : 속성값;
+        }
+        color : 글자(Content) 생삭
+        보통 문서 내 모든 요소 여백 초기화할 때 사용
+    </pre>
+
+    <hr>
+
+    <h2>2. 태그 선택자</h2>
+    <pre>
+        태그명 { 
+            스타일 속성 : 속성값;
+        }
+    </pre>
+
+    <h3>3. 아이디 선택자</h3>
+    <pre id="pre-3">
+        #아이디속성값{
+
+        }
+        여기는 초록말고 다른색으로 하고싶은데??
+    </pre>
+
+    <h3>4. 클래스 선택자</h3>
+    <pre>
+        .클래스속성값 {
+
+        }
+        => 여러 요소를 묶어서 선택할 때
+    </pre>
+
+    <!--
+        id, class : 모든 요소에 공통으로 쓸 수 있는 속성
+
+        id : 문서 내 고유 / 다른 요소와 속성값이 중복되면 안됨
+        class : 별칭 / 여러 요소가 같은 속성값을 가지는 경우가 많음
+                + 클래스 속성값은 하나의 요소가 여러 개의 클래스 슥성값을 가질 수 있음
+    -->
+    <ul>
+        <li class="class-1">클래스선택지1</li>
+        <li class="class-2">클래스선택지2</li>
+        <li class="class-2">클래스선택지3</li>
+        <li class="class-1">클래스선택지4</li>
+        <li class="class-1 class-2">클래스선택지5</li>
+    </ul>
+
+    <a href="">나는 a태그</a>
+
+</body>
+</html>

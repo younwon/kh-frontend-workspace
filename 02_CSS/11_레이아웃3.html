@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>옛날방식</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+            background-color: black;
+            color: white;
+        }
+
+        .float{
+            width: 100px;
+            height: 100px;
+            border: 1px solid white;
+            float: left;
+        }
+
+        #light{
+            border: 1px solid white;
+            width: 150px;
+        }
+
+        .test{
+            width: 150px;
+            height: 150px;
+            border-radius: 75px;
+        }
+        .red{
+            background-color: red;
+            /* visibility: hidden; */
+            display: none;
+        }
+        .orange{
+            background-color: orange;
+        }
+        .green{
+            background-color: green;
+        }
+
+        #fix{
+            position: fixed;
+            width: 150px;
+            height: 300px;
+            border: 1px solid white;
+            top: 60px;
+            right: 150px;
+        }
+
+        .outer{
+            border : 1px solid white;
+            position: relative;
+            height: 400px;
+        }
+
+        .position{
+            border: 1px solid yellow;
+            position: absolute
+        }
+        #p1{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+            left: 150px;
+            top: 40px;
+        }
+
+        #p2{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            left: 220px;
+            top: 70px;
+            transform: rotate(15deg);
+        }
+        #p3{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            left: 260px;
+            top: 90px;
+            transform: rotate(-30deg);
+        }
+
+        #z1{
+            background-color: red;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            z-index: 100;
+        }
+        #z2{
+            background-color: blue;
+            top: 50px;
+            left: 50px;
+            width: 50px;
+            height: 50px;
+        }
+        #z3{
+            background-color: yellow;
+
+        }
+    </style>
+</head>
+<body>
+    <h4>가로로 배치를 하고싶다</h4>
+
+    <div class="float">1</div>
+    <div class="float">2</div>
+    <div class="float">3</div>
+    <div class="float">4</div>
+    <div class="float">5</div>
+    <br clear="both">
+
+    <hr>
+
+    <h3>display조금 더 해야지</h3>
+
+    <div id="light">
+        <div class="test red"></div>
+        <div class="test orange"></div>
+        <div class="test green"></div>
+    </div>
+        
+
+    <div id="fix">날 따라와</div>
+
+    <h4>position: 요소를 어디 기준으로 배치할지</h4>
+
+    <pre>
+        static : 기본
+        relative : 원래 자리 기준으로 이동. 기준점
+        absolute : 가장 가까운 relative부모 기준으로 배치
+        fixed : ㅂ라우저 창 기준 스크롤해도 고정
+
+        sticky : 스크롤전엔 relative 지정위치 닿으면 fixed처럼
+        위치는 top /right/ bottom/left 지정
+    </pre>
+
+    <div class="outer">
+        <div class="position" id="p1">1번 요소</div>
+        <div class="position" id="p2">2번 요소</div>
+        <div class="position" id="p3">3번 요소</div>
+    </div>
+
+    <hr>
+
+    <h3>z-index : 겹친 요소의 위아래 순서</h3>
+    <p>position을 static말고 다른걸로 바꾸기 시작</p>
+
+    <div class="out">
+        <div class="position" id="z1">요소 1</div>
+        <div class="position" id="z2">요소 2</div>
+        <div class="position" id="z3">요소 3</div>
+    </div>
+</body>
+</html>

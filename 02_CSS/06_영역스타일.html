@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>박스모델</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+
+        .test{
+            width: 100px;
+            height: 100px;
+            background-color: orangered;
+            border: 10px solid orange;
+        }
+
+        #test1{
+            padding: 100px;
+            margin: 50px
+        }
+
+        #test2{
+            padding: 50px 20px;
+            margin-top: -150px;
+        }
+
+        #test3 {
+            padding: 50px 20px 10px 0px;
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test">content</div>
+
+    <hr>
+
+    <h3>padding</h3>
+    <div id="test1" class="test">컨텐트</div>
+    <p>padding:</p>
+    <div id="test2" class="test">컨텐트</div>
+    <p>padding: 50 20</p>
+    <div id="test3" class="test">컨텐트</div>
+    <p>padding: 50 20 10 0</p>
+
+    <p>실제 요소가 차지하는 크기 == content + padding + border</p>
+</body>
+</html>

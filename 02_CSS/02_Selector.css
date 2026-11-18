@@ -1,0 +1,65 @@
+body{
+    color: whitesmoke;
+    background-color: black;
+}
+/*div의 자식 ul*/
+div>ul{
+    color: chocolate;
+}
+/*div의 후손 */
+div ul{
+    color: red;
+}
+
+#test2 + div {
+    background-color: pink;
+}
+
+#test2 ~ ul{
+    color: rgb(123, 0, 255);
+}
+
+#test3 > li:first-child {
+    color : blue
+}
+
+#test3 > li:last-child{
+    color: aqua;
+}
+
+div[name="n"]{
+    color: yellowgreen;
+}
+
+.area{
+    width: 200px;
+    height: 200px;
+    border: 1px solid white;
+}
+
+#active:active{
+    background-color: red;
+    cursor: pointer;
+}
+
+#hover{
+    background-color: green;
+
+    &:hover{
+        background-color: orange;
+        cursor: pointer;
+    }
+}
+/* #hover:hover{
+    background-color: orange;
+    cursor: pointer;
+} */
+
+#animal>input[type="checkbox"]:checked{
+    width: 50px;
+    height: 50px;
+}
+
+input[type="checkbox"]:checked + label{
+    font-size: 50px;
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 사용 목적</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+        .area{
+            width: 500px;
+            height: 300px;
+            border: 1px;
+        }
+        .yellow{
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+     <pre>
+        1. HTML 요소 조작
+        2. AJAX(서버랑 통신) => 서버를 배우고 난 후
+        3. SPA 구현          => SpringBoot 배우고 난 후
+        4. 데이터 입 / 출력
+     </pre>
+
+     <hr>
+
+     <!--
+        알아둬야 하는 객체 => window
+        window 객체 : 브라우저 창(탭) 하나당 하나씩 생기는 최상위 객체
+        alert, console.log, document 전부 다 window의 것
+     -->
+     <script>
+        // window.alert('하이');
+     </script>
+
+     <h3>출력하는 방법</h3>
+     <button onclick="documentWrite()">누르고 싶은 버튼</button>
+
+     <script>
+        function documentWrite(){
+            document.write('<h1>제목을 작성합니다.</h1>');
+        }
+     </script>
+
+     <hr>
+
+     <h2>요소.innerHTML / innerText</h2>
+
+     <div id="area1" class="area">
+        요소(Element)의 내용(Content)을 읽고 쓰는 속성 두 가지
+        <hr>
+        
+        => get : 요소.innerHTML / 요소.innerText <br>
+        => set : 요소.innerHTML = '값'; <br><br>
+
+        innerHTML : 태그를 태그로 해석함 <br>
+        innerText : 태그를 글자로 해석함
+
+     </div>
+
+     <button id="btn1">버튼</button>
+
+     <script>
+        // document객체는 웹 브라우저에 현재 로드된 HTML 문서 자체
+        console.log(document);
+        // 1. 먼저 필요한 요소에 접근
+        const btn1 = document.querySelector("#btn1");
+
+        console.log(btn1);
+        console.dir(btn1);//속성보기
+
+        // 2. 요소의 이벤트 속성에 함수 대입
+        btn1.onclick = function(){
+            console.log("함수를 대입함");
+            // 3. 필요한 요소에 접근
+            const area1 = document.querySelector("#area1");
+            console.dir(area1);
+
+            // 속성 get
+            console.log(area1.id);
+            console.log(area1.className);
+            area1.innerHTML = "<b>innerHTML속성 값 변경</b>"
+            area1.innerHTML += "<br><b>추가도 가능</b>"
+            area1.className = "yellow"
+        }
+     </script>
+
+     <hr>
+     <button onclick="check()">나는 버튼</button>
+     <div id="area2" class="area"></div>
+
+     <script>
+        function check(){
+            const value = confirm("졸리면 확인, 아니면 취소를 눌러보세요~~");
+            // 확인 / 취소 버튼이 있는 창
+            // 확인 => true, 취소 => false 반환
+
+            const area2 = document.querySelector("#area2");
+
+            if(value){
+                area2.innerHTML = "<div style = 'color:red'>정신차렷!!!!</div>";
+            } else{
+                area2.innerHTML = "<div>안졸린데용</div>";
+            }
+        }
+     </script>
+
+     <hr>
+
+     <button onclick="minus()">-</button> <span id="count">0</span>개 <button onclick="plus()">+</button>
+
+     <script>
+        function minus(){
+            const count = document.querySelector("#count");
+            console.log(count);
+            count.innerText -= 1;
+        }
+
+        //+는 문자열이 붙기때문에 나중에
+        function plus() {
+            const count = document.querySelector("#count");
+            count.innerText = Number(count.innerText) + 1;
+        }
+     </script>
+
+     <hr>
+
+     <h3>prompt('질문')</h3>
+
+     <ul id="parent"></ul>
+     <button onclick="createEl()">열심히 하자</button>
+
+     <script>
+        function createEl(){
+            const num = prompt('숫자를 입력하세요');
+            console.log(num);
+            const parent = document.querySelector("#parent");
+
+            for(let i = 0; i < num; i++){
+                parent.innerHTML += "<li>자식요소</li>"
+            }
+        }
+     </script>
+
+     <hr>
+
+     <h3>가장 많이 사용하는 방법</h3>
+
+     <input type="text" id="input-id" /> <br>
+     <label for="input-id" id="msg"></label>
+     <button onclick="validation()">검사하기</button>
+
+     <script>
+        function validation(){
+            const el = document.querySelector("#input-id");
+            const labelEl = document.querySelector("#msg");
+            labelEl.style.fontSize = "11px";
+
+            //사용자의 입력값이 다섯글자가 넘을 경우
+            console.dir(el);
+            console.log(el.value.length);
+
+            if(el.value.length > 5){
+                labelEl.innerHTML = "<b>너무 길어요</b>";
+                labelEl.style.color = "red";
+            } else {
+                labelEl.innerHTML = "<b>참 잘했어요</b>";
+                labelEl.style.color = "green";
+            }
+        }
+     </script>
+
+     <hr>
+
+     <h2>요소에 접근하는 방법들</h2>
+
+     <pre>
+        document.querySelector("CSS선택자")             => 요소를 딱 첫번째 하나
+        document.querySelectorAll("CSS선택자")          => 전부(배열처럼)
+        document.getElementById("아이디")               => 하나
+        document.getElementsByClassName("클래스속성값") => 전부
+        document.getElementsByTagName("태그")           => 전부
+        document.getElementsByName("name속성값")        => 전부
+     </pre>
+
+     <h3>주제 : 게임</h3>
+
+     <input type="checkbox" name="game" value="GTA6"/>GTA6
+     <input type="checkbox" name="game" value="몬스터헌트"/>몬스터헌터
+     <input type="checkbox" name="game" value="마피아"/>마피아
+     <input type="checkbox" name="game" value="페르소나"/>페르소나
+
+     <button onclick="checkGame()">게임을 선택해보세요~</button>
+
+     <script>
+        function checkGame(){
+            const games = document.getElementsByName("game");
+            console.log(games);
+            let checked = "";
+            for(let i = 0; i < games.length; i++){
+                if(games[i].checked){
+                    checked += " " + games[i].value;
+                }
+            }
+            console.log("체크한 요소들 : " + checked);
+
+            // filter + map => 자바 스트림이랑 같음
+            const selected = [...games].filter((e) => e.checked) .map((e) => e.value);
+            //alert("선택된 요소들 : " + selected);
+            alert(`선택한 게임은 ${selected} 입니다`);
+        }
+     </script>
+
+     <hr>
+
+     <h4>기억 해둘 내용</h4>
+
+     <pre>
+        자바스크립트는 모든 값을 조건식에 넣을 수 있음
+        0, -0, 0n, '', "", null, undefined, NaN, false : 거짓같은 값(falsy)
+        위 값들을 제외한 나머지 전부 true
+
+        => if(input.value) {} 값이 비어있나 안비어있나
+     </pre>
+     <script>
+        if("abc"){
+            alert("특징");
+        }
+     </script>
+</body>
+</html>
+
+/*
+    JAVA, SQL, JDBC, MyBatis : 서버의 자원을 사용
+    HTML, CSS, JS : 정적자원, 클라이언트 자원을 사용
+*/

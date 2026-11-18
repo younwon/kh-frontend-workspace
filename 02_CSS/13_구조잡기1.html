@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면 구조를 나눠보자</title>
+    <style>
+        div,
+        #wrap > * {
+            border: 1px solid red;
+            box-sizing: border-box;
+        }
+
+        #wrap{
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+        }
+
+        #wrap > * {
+            width: 100%;
+        }
+
+        header,
+        footer {
+            height: 25%;
+        }
+
+        main{
+            height: 50%;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header></header>
+        <main></main>
+        <footer></footer>
+    </div>
+</body>
+</html>

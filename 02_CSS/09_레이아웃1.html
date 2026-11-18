@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>블럭쌓기</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+
+        .nemo{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .inline{
+            display: inline;
+        }
+
+        .ib{
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h4>div들</h4>
+    <div class="nemo">1</div>
+    <div class="nemo">2</div>
+    <div class="nemo">3</div>
+    <div class="nemo">4</div>
+    <div class="nemo">5</div>
+
+    <h3>display속성</h3>
+
+    <pre>
+        선택자 {
+            dispaly : block / inline / none / inline-block / flex / grid /...;
+            block : 블럭처럼 한 줄 차지
+            inline : 인라인처럼 옆으로 나열된다
+            inline-block : 둘의 장점만 결합
+            none : 사라짐
+            flex : 자식들을 가로/세로로 정렬하는 컨테이너
+        }
+    </pre>
+
+    <h4>inline</h4>
+    <div class="nemo inline">1</div>
+    <div class="nemo inline">2</div>
+    <div class="nemo inline">3</div>
+    <div class="nemo inline">4</div>
+    <div class="nemo inline">5</div>
+
+    <h3>inline-block</h3>
+    <div class="nemo ib">1</div>
+    <div class="nemo ib">2</div>
+    <div class="nemo ib">3</div>
+    <div class="nemo ib">4</div>
+    <div class="nemo ib">5</div>
+
+    
+</body>
+</html>

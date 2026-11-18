@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable</title>
+    <style>
+        .area{
+            width: 500px;
+            min-height: 200px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>변수에 대하여</h1>
+
+    <pre>
+        int a = 10;
+        자료형 변수명;
+        const a = 10;
+        키워드 변수명;
+
+        키워드 : const, let, var
+    </pre>
+
+    <button onclick="variable()">변수 써보자</button>
+
+    <script>
+        function variable(){
+            var userId = "user01";
+            userId = "user02";
+            userId = 123;
+            var userId = "user03"; //덮어쓰기되서 문제
+            console.log(userId);
+
+            //재할당 금지(상수)
+            const userName = "홍길동";
+            // userName = "길동";
+            console.log(userName);
+            //1. 실수방지 => 중간에 값을 덮어쓰는 사고 예방
+            //2. 읽기쉬움 => 끝까지 똑같은걸 가리킨다
+            //3. 초기값 강제 : undifined상태를 볼일이 없음
+
+            /*
+                var : 중복선언 O, 재할당 O => 안 쓴다
+                let : 중복선언 X, 재할당 O => 이것도 거의 안씀
+                const : 중복언선 X, 재할당 X, 선언 시 초기화 필수
+
+                무저건 const로 선언하고, 바꿔야할 때만 let
+            */
+        }
+    </script>
+
+    <hr>
+
+    <h3>전역 변수</h3>
+
+    <script>
+        var str = "var 전역변수"; // window객체의 속성으로 추가
+
+        // window.onload => HTML 전부 로딩된 뒤 수행
+        window.onload = function(){
+            var str = "var 지역변수";
+
+            console.log(str);
+
+            console.log(window.str);
+        };
+
+        console.log(str);
+    </script>
+
+    <hr>
+
+    <h2>자료형</h2>
+
+    <pre>
+        변수 선언할 때 자료형을 명시하지 않음
+        자료형이 없는게 아님!! => 대입되는 값을 보고 알아서 정함 : 타입추론(자바 12Ver)
+
+        string   : 문자열 => '', "", `` (``이거 사용)
+        number   : 숫자 => 정수/실수 구분 없음
+        boolean  : true / false
+        object   : 객체, 배열
+        function : 함수
+        
+        undefined : 선언만하고 값 대입하지 않은 상태
+    </pre>
+
+    <div id="area" class="area"></div>
+    <button onclick="printType();">출력하기</button>
+    <script>
+        function printType(){
+            // 상품
+            const name = `삼각김밥`;
+            const price = 1900;
+            const isSale = false;
+            const material = [`밥`, `김`];
+            const maker = {
+                제조사 : `KH`,
+                판매사 : `KH`
+            };
+            const fn = function(){
+                alert(`삼각김밥 맛있어요`);
+            };
+            let noVal;
+            const area = document.querySelector("#area");
+
+            area.innerHTML = `${typeof name}<br>
+                              ${typeof price}<br>
+                              ${typeof isSale}<br>
+                              ${typeof material}<br>
+                              ${typeof maker}<br>
+                              ${typeof fn}<br>
+                              ${typeof noVal}`;
+        }
+    </script>
+
+    <hr>
+
+    <h3>string 메소드 + 형변환</h3>
+
+    <button onclick="strMethod()">문자열 메소드 호출</button>
+
+    <script>
+        function strMethod(){
+            const str = "Hello World";
+
+            console.log(`길이 : ${str.length}`);
+            // indexOf, lastIndexOf, subString 자바와 동일하게 사용가능
+
+            console.log("-----------------------------------------")
+            //input.value는 무조건 문자열
+            //+는 문자열 , 나머지 - * / 숫자
+            console.log("-----------------------------------------")
+            const price = "1,000";
+            const addPrice = 300;
+
+            console.log(price + addPrice);
+            console.log(parseInt(price) + addPrice);
+            console.log(Number(price) + addPrice);
+
+            console.log(Number(price));
+            console.log(parseInt(price));
+            console.log(isNaN("abc"));
+            console.log(isNaN(123));
+
+        }
+    </script>
+</body>
+</html>

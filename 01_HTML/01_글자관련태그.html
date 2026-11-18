@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--HTML문서 형식 선언-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하하 제목이다</title>
+</head>
+<body>
+    구독관리 프로그램<br/>
+    1. 구독 프로그램 전체조회
+    <hr>
+    
+    <!--
+        브라우저 렌더링 엔진
+        브라우저가 화면을 그리는 순서
+
+        1단계 : Parsing
+            => HTML 문자열을 읽어서 DOM Tree를 만든다
+            CSS도 동시에 파싱해서 CSSOM Tree를 만든다
+        2단계 : RenderTree 구축
+            => DOM + CSSOM을 합쳐서 화면에 보여질것만 모아둔 트리를 만든다
+        3단계 : Layout
+            => 각 요소가 화면 어디에, 어느 크기로 놓일지 계산
+        4단계 : Painting
+            => 계산된 위치에 실제 픽셀을 칠함
+
+        오늘날 3대 엔진
+        Blink - Chrome, Edge, Opera, Brave
+        Webkit - safari, IOS의 모든 브라우저
+        Gecko - firefox
+    
+    -->
+    <!--h1은 문서당 딱 한개만 쓰자(약속)-->
+    <h1>제목1</h1>
+    <h2>제목2</h2>
+    <h3>제목3</h3>
+    <h4>제목4</h4>
+    <h5>제목5</h5>
+    <h6>제목6</h6>
+
+    <h3>문단을 나눌 때 사용</h3>
+
+    <p>
+        문단 영역을 나누는 태그로는 p태그와 pre태그가 있음 <br>
+        p는 개행을 하더라도 줄바꿈이 일어나지 않음
+    </p>
+
+    <pre>
+        개행 공백 이런게 다 그대로 나옴
+        하지만 마음에 안들게 나옴
+    </pre>
+
+    <h3>소소한 애들</h3>
+    <b>굵게</b> <br>
+    <strong>강하게</strong> <br>
+    <i>기울임</i> <br>
+    <em>기울임</em> <br>
+    <s>취소선</s> <br>
+    <mark>형광펜</mark> <br>
+    <small>작은거</small> <br>
+    <big>큰거</big>
+    글을 쓰다보면 <sub>아래첨자</sub> 또 <sup>위첨자</sup>
+    
+
+</body>
+</html>

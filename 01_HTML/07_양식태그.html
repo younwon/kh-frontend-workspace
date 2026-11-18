@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아주중요한양식태그</title>
+</head>
+<body>
+    <label for="">화초이름을 입력하세요.</label> <br>
+    <input type="text" placeholder="최대 10자 이내로 작성하시오"> <br>
+    <button>확인</button>
+
+    <h1>input</h1>
+    <p>
+        사용자에게 값을 입력받을 때 사용하는 상자 <br>
+        type속성으로 어떤상자인지 결정
+    </p>
+
+    아이디 : 
+    <input type="text" placeholder="아이디 입력">
+    <br>
+    비밀번호 : 
+    <input type="password" placeholder="비밀번호 입력">
+    
+    <br>
+    <button>로그인</button>
+
+    <hr>
+
+    <h2>form</h2>
+
+    <p>
+        "입력양식" 이라는 의미 <br>
+        form 안에 submit 버튼을 클릭하면 <br>
+        form 안에 사용자가 입력한 값들을 전부 모아서 <br>
+        서버로 요청을 보냄 <br><br>
+
+        form태그 + submit버튼 => 한세트
+    </p>
+
+    <p>
+        필수구성요서 <br>
+        form + input + button(type=submit)
+
+        submit 버튼 클릭 시
+        => action에 적은 주소로
+        => method에 적은 방식으로
+        => input에 입력한 값들을 key=value형태로 전달함
+    </p>
+
+    <h4>form태그 사용예시</h4>
+    <form action="https://127.0.0.1:9999/html" method="get">
+        키워드 : <input type="text" name="query">
+        <button type="submit">요청보내기</button>
+    </form>
+    <hr><br>
+
+    <form action="http://127.0.0.1:9999/login" method="post">
+        아이디 : <input type="text" name="userId"> <br>
+        비밀번호 : <input type="password" name="userPwd"> <br>
+        <button type="submit">로그인</button>
+    </form>
+
+    <!--POST는 요청시 전달값이 주소창에 안보임 요청 Body에 숨어서 감-->
+
+    <hr>
+
+    <!--
+        fieldset : input들을 그룹으로 묶어서 테두리 침
+        legend : 그 그룹의 제목(없어도 됨)
+    -->
+    <h3>fieldset / legend</h3>
+    <form action="legend">
+        <fieldset>
+            아이디 <br>
+            <input type="text" name="id"
+                   placeholder="아이디는 필수 입력사항입니다"
+                   required> <br>
+            비밀번호 <br>
+            <input type="password" name="pwd"
+                   placeholder="비밀번호는 최대 4글자"
+                   maxlength="4"
+                   required> <br>
+        </fieldset>
+        
+        <fieldset>
+            전화번호 <input type="tel"> <br>
+            검색 <input type="search"> <br>
+            URL <input type="url"> <br>
+            email <input type="email"> <br>
+        </fieldset>
+        <button type="submit">요청보내기</button>
+    </form>
+
+    <button type="button">폼태그 바깥</button>
+
+    <pre>
+        input오쇼에 자주 쓰는 속성
+        required : 필수입력
+        placeholder : 입력 유도 안내
+        value : input에 실제 입력된 값
+        name : 서버로 요청할 때 넘어가는 key
+               from태그 내부에 input은 반드시 name속성을 작성할 것
+               name이 없으면 값이 안넘어감
+    </pre>
+
+    <hr>
+
+    <form action="서버주소">
+        <fieldset>
+            <legend>오늘의 일기</legend>
+
+            제목 : <input type="text" name="title" size="50"> <br>
+            내용 : <br>
+            <textarea name="content"
+                      cols="58"
+                      rows="10"
+                      style="resize: none;"></textarea>
+            <hr>
+            <button type="submit">일기 작성 끝</button>
+        </fieldset>
+        <hr>
+        <fieldset>
+            <legend>숫자 관련</legend>
+            나이 : <input type="number" value="0"
+                          min="0" max="20" step="5">
+            <br>
+            가격 : <input type="range" name="highPrice" min="0" max="100">
+        </fieldset>
+        <hr>
+        <fieldset>
+            date : <input type="date"> <br>
+            month : <input type="month"> <br>
+            week : <input type="week"> <br>
+            time : <input type="time"> <br>
+            datetime-local : <input type="datetime-local">
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form action="checked">
+        <h4>type="radio"</h4>
+        <p>
+            -여러개의 조건중 딱 하나만 선택하게 하고 싶을때 <br>
+        </p>
+        <br>
+        <input type="radio" name="review" value="9+"> 9+ 최고 <br>
+        <input type="radio" name="review" value="8+"> 8+ 우수 <br>
+        <br>
+
+        <h4>type="checkbox"</h4>
+        <p>여러 개의 조건 중 여러 개를 선택하게 하고 싶을 때</p>
+        <input type="checkbox" name="service" id="aircon" value="에어컨"> 
+        <label for="aircon">에어컨</label> <br>
+        <input type="checkbox" name="service" id="minibar" value="미니바">
+        <label for="minibar">미니바</label> <br>
+
+        <button type="submit">요청보내기</button>
+
+        <hr>
+        
+        <fieldset>
+            첨부파일 : <input type="file"> <br>
+            골라골라 : <input type="color"> <br>
+            안보임 : <input type="hidden"> <br>
+            상품코드 : <input type="hidden" name="productNo" value="20000">
+        </fieldset>
+
+        <fieldset>
+            지게차 후방 경보기 :
+            <select name="color">
+                <option>빨강</option>
+                <option>파랑</option>
+                <option value="black">검정</option>
+            </select>
+
+            <hr>
+            색상 : <input type="text" list="colors">
+            <datalist id="color">
+                <option value="black">검정</option>
+                <option value="red">빨강</option>
+            </datalist>
+        </fieldset>
+
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개요</title>
+</head>
+<body>
+    <h1>자바 스크립트</h1>
+
+    <pre>
+        1995년 브랜던 아이크가 "브라우저에 동작을 넣으려고" 10일 만에 만든 언어
+        브라우저 전쟁을 거치면서 ECMAScript라는 표준으로 통일
+        ES6(2015) 이때를 기점으로 이후 현대적인 언어로 재탄생 => 지급 웹에서 제일 영향력 큰 언어
+
+        이름에 Java가 들어가는 건 그때 유행이라 마케팅용으로 붙인 것
+        ----------------------------------------------------------
+        브라우저 별 엔진       렌더링   자바스크립트엔진(JS코드를 읽고 실행해주는 프로그램)
+        ----------------------------------------------------------
+        Chrom, Edge, Whale => Blink  =>     V8(C++로 만듬)
+        Safari             => WebKit =>     Nitro
+        Firefox            => Gecko  =>     SpiderMonkey
+    </pre>
+
+    <h3>스크립트 언어</h3>
+    <p>
+        이미 있는 프로그램(브라우저)을 제어하기 위한 언어 <br>
+        빠르게 배우고 짧은 코드로 바로바로 동작시킬 수 있음
+    </p>
+
+    <h3>JavaScript</h3>
+    <p>
+        웹에서 가장 많이 쓰는 언어 <br>
+        현시대 웹 화면을 만드는 기반 기술(Angular, Vue, React 전부다 JS기반) <br>
+        <br>
+        - 컴파일 : 전체를 먼저 번역해놓고 실행 <br>
+        - 인터프리터 : 한 줄 한 줄 읽으면서 바로 실행 <br>
+        - JIT 컴파일러 : 자주 실행되는 "핫 코드"만 기계어로 미리 번역 => 자바의 방식, JS의 방식
+    </p>
+    <pre>
+        JS 특징
+        1. 함수를 일급객체로 취금(값으로 사용할 수 있음)
+        함수를 변수에 대입, 매개변수에 대입, 반환할 수 있음(자바의 람다가 이걸 흉내낸 것)
+        
+        2. 문법이 느슨
+        접근제한자 X, 반환형 X, 변수 타입(타입추론) X
+
+        3. 굉장히 발전을 계속함
+        브라우저, 서버(Node.js), 앱(React Native), 게임 등 여러군데 사용
+    </pre>
+
+    <hr>
+
+    <ol>
+        <li>inline: 요소의 이벤트 속성에 직접</li>
+        <li>internal : HTML안 script 태그에 기술</li>
+        <li>external: .js파일 따로 만들어서 불러오기</li>
+    </ol>
+
+    <h4>1. inline 방식</h4>
+    <pre>
+        여는 태그의 이벤트 속성(onclick 등)에 코드 직접 작성
+        코드가 매우 짧을 떄만 사용
+    </pre>
+
+    <button onclick="alert('하이')">클릭</button>
+    <span ondblclick="console.log('와 자바스크립트')">더블클릭</span>
+
+    <h4>2. internal 방식</h4>
+    <pre>
+        script 태그 안에 함수 단위로 코드 작성
+        요소에 이벤트가 발생하면 함수 호출
+    </pre>
+
+
+    <button onclick="fn1()">1번</button>
+    <button id="btn1">2번</button>
+    <button id="btn2">3번</button>
+
+    <script>
+        fn1(); //호이스팅(선언적 함수는 실행전에 맨위로 올린다)
+
+
+        // 함수 정의
+        // function 함수명(매개변수) { }
+        function fn1(){ // 선언적 함수
+            alert("함수를 호출함")
+        }
+
+        const btnEl = document.getElementById("btn1");
+        btnEl.addEventListener("click", () => {
+            fn1();
+        });
+
+        const btn2 = document.querySelector('#btn2');
+        btn2.onclick = function () { // 익명함수
+            alert("호잇");
+        };
+
+        // 이벤트루프, 실행컨텍스트 호이스팅, 비동기처리(나중에 배우기)
+    </script>
+
+    <hr>
+
+    <h4>3. external 방식</h4>
+
+    <p onclick="test()">별도 .js파일로 분리</p>
+
+    <script src="myModule.js"></script>
+
+</body>
+</html>

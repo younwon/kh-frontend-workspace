@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+            color: blue;
+        }
+
+        #color{
+            color: orangered;
+            color: #427e23;
+            color: rgb(255, 0, 200);
+            color: rgba(40, 57, 0, 0.387);
+            color: hsl(200, 100%, 50%);
+            text-decoration: underline;
+            text-decoration: overline;
+            text-decoration: line-through;
+        }
+
+        a{
+            text-decoration: none;
+            color: #427e23;
+
+            &:hover{
+                text-decoration: underline;
+                font-size: 20px;
+                color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <pre id="color">
+        선택자 {
+            color: 색상;
+        }
+
+        스타일도 상속이 됨
+
+        상속가능 속성
+        font-family, font-size, font-weight, font-style
+        line-height
+        color, text-align, text-indent
+        letter-spacing, white-space
+
+        상속안되는 속성
+        width, height, margin, padding, border, box-sizing
+        display, position, float, clear, overflow, z-index
+        background, vertical-align, text-decoration
+    </pre>
+
+    <a href="http://www.naver.com" >네이버로</a>
+    <hr>
+    <br>
+    <!-- 한굴입숨 -->
+    <h3>text-align</h3>
+    <p style="border:1px solid; text-align:justify;">
+        국가안전보장에 관련되는 대외정책·군사정책과 국내정책의 수립에 관하여 국무회의의 심의에 앞서 대통령의 자문에 응하기 위하여 국가안전보장회의를 둔다. 한 회계연도를 넘어 계속하여 지출할 필요가 있을 때에는 정부는 연한을 정하여 계속비로서 국회의 의결을 얻어야 한다. 국교는 인정되지 아니하며, 종교와 정치는 분리된다.
+    </p>
+
+    <!--
+        line-height : 줄간격
+        letter-spacing : 글자 간격
+    -->
+
+</body>
+</html>

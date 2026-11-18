@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8분할구조잡기</title>
+    <link rel="stylesheet" href="Footer.css">
+    <link rel="stylesheet" href="Navbar.css">
+    <link rel="stylesheet" href="Header-2.css">
+    <link rel="stylesheet" href="Content-2.css">
+    <link rel="stylesheet" href="Logo.css">
+    <style>
+        #wrap{
+            width: 1000px;
+            height: 800px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        header{
+            flex: 2;
+            display: flex;
+        }
+        nav{
+            flex: 0.5;
+        }
+        main{
+            flex: 5.5;
+            display: flex;
+        }
+        footer{
+            flex: 2;
+        }
+
+        #header-1{
+            flex: 2;
+        }
+        #header-2{
+            flex: 6.5;
+        }
+        #header-3{
+            flex: 1.5;
+        }
+
+        #content-1{
+            flex: 1;
+        }
+        #content-2{
+            flex: 7;
+        }
+        #content-3{
+            flex: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div id="header-1">
+                 <a href="#" id="logo">Jewelry <span id="num">501</span></a>
+            </div>
+            <div id="header-2">
+                <form action="search" id="search-form">
+                    <div id="search-text">
+                        <input type="text" name="query" placeholder="검색어를 입력">
+                    </div>
+                    <div id="search-btn">
+                        <button type="submit">검색</button>
+                    </div>
+                </form>
+            </div>
+            <div id="header-3"></div>
+        </header>
+        <nav>
+            <ul id="navbar">
+                <li><a href="#">베스트</a></li>
+                <li><a href="#">전체상품</a></li>
+                <li><a href="#">반지</a>
+                    <ul>
+                        <li><a href="#">금반지</a></li>
+                        <li><a href="#">은반지</a></li>
+                        <li><a href="#">옥반지</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">귀걸이</a>
+                    <ul>
+                        <li><a href="#">금귀걸이</a></li>
+                        <li><a href="#">은귀걸이</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">목걸이</a></li>   
+            </ul>
+        </nav>
+        <main>
+            <div id="content-1">
+            </div>
+            <div id="content-2">
+                <div id="hero">
+                    <div id="tag">30% 쿠폰</div>
+                    <div id="title">첫 구매 전용 혜택 도착</div>
+                    <div id="sub">웰컴 쿠폰백</div>
+                </div>
+                <div id="list"></div>
+            </div>
+            <div id="content-3"></div>
+            
+        </main>
+    <footer>
+        <div id="footer-1">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보</a>
+            <a href="#">인재 채용</a>
+            <a href="#">훈련비</a>
+            <a href="#">강사 구인</a>
+        </div>
+        <div id="footer-2">
+            <p id="p-1">
+                KH academy Jongno | 대표자 : 홍길동 | 책임자 : 홍길동 | 개인정보책임자 : 홍길동
+            </p>
+            <p id="p-2">
+                Copyright 2026 kh 501 all right reserved
+            </p>
+        </div>
+    </footer>
+    </div>
+</body>
+</html>
+
+
+<!--
+ 오늘의 실습 겸 숙제
+
+ 나마의 웹사이트 메인페이지 만들기
+-->

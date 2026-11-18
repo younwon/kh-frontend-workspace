@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+        .container{
+            width: 1200px;
+            border: 3px solid lightgray;
+            padding: 30px;
+            margin: auto;
+        }
+        .box{
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            background-color: black;
+            color: white;
+            border: 1px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>flex</h1>
+
+    <div class="container" style="display: flex;">
+        <div class="box" style="flex-grow: 1;">나는 1번</div>
+        <div class="box" style="flex: 1;">나는 2번</div>
+        <div class="box" style="flex-grow: 1;">나는 3번</div>
+    </div>
+
+    <div class="container" style="display: flex; flex-direction: column;">
+        <div class="box">나는 1번</div>
+        <div class="box">나는 2번</div>
+        <div class="box">나는 3번</div>
+    </div>
+
+    <hr>
+
+    <h4>flex의 정말 두려운점</h4>
+
+    <pre>
+        justify-content : 주축(가로) 방향 정렬
+
+        flex-start : 왼쪽(기본)
+        center : 가운데
+        flex-end : 오른쪽
+        space-between - 양 끝 붙이고 사이 간격 균등
+        space-around : 요소 양옆에 같은 간격
+        space-evenly : 모든 간격 똑같이
+    </pre>
+
+    <div class="container" style="display: flex; justify-content: space-between;">
+        <div class="box">나는 #번</div>
+        <div class="box">나는 #번</div>
+        <div class="box">나는 #번</div>
+    </div>
+
+    <pre>
+        stretch : 부모높이에 맞춰 늘림(기본)
+        flex-start : 위
+        center : 세로 가운데
+        flex-end : 아래
+        baseline : 글자 밑줄
+    </pre>
+
+    <div class="container" style="display: flex; height: 500px; align-items: center; justify-content: center;">
+        <div class="box" style="order: 2;">나는1번</div>
+        <div class="box" style="order: 1;">나는2번</div>
+        <div class="box" style="order: 3;">나는3번</div>
+    </div>
+
+</body>
+</html>

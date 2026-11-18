@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자part2</title>
+
+    <link rel="stylesheet" href="02_Selector.css">
+
+</head>
+<body>
+    <h1>종종쓰는 기타 선택자들</h1>
+
+    <h2>1. 자식선택자 / 후손선택자</h2>
+
+    <pre>
+        자식 : 바로 아래 한 단계
+        후손 : 아래 전부
+    </pre>
+
+    <ul>ul
+        <li>li</li>
+        <li>li</li>
+    </ul>
+
+    <div>
+        <ul>ul
+            <li>li</li>
+            <li>li</li>
+        </ul>
+        <p>
+            <ul>이렇게</ul>
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>동위(같은 레벨) 선택자</h2>
+
+    <div id="test2">1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <ul id="test3">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <div name="n">요소</div>
+    <div name="abc">abc</div>
+
+    <h2>4. 반응 선택자</h2>
+
+    <div id="active" class="area">영역</div>
+    <hr>
+    <div id="hover" class="area">영역</div>
+
+    <hr>
+
+    <div id="animal">
+        <input type="checkbox" id="cat">
+        <label for="cat">고양이</label>
+        <br>
+        <input type="checkbox" id="tiger">
+        <label for="tiger">호랑이</label>
+        
+    </div>
+
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

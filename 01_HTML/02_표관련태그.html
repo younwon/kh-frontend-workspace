@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표관련태그</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+        table, th, td{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        표(table)
+        행(row) + 셀(cell)로 구성
+        table : 표 하나
+        tr    : 한 행
+        th    : 제목 셀
+        td    : 일반 셀
+        + thead, tbody, tfoot : 행들을 머리/몸통/바닥으로 묶어주는 의미용테그
+
+        colspan : 가로로 셀 합치기
+        rowspan : 세로로 셀 합치기
+    -->
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>좋아요</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>에버랜드 수험생 프롬모션</td>
+                <td>호랑해</td>
+                <td>오늘</td>
+                <td>12</td>
+                <td>5555</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>푸바오 어디있지?</td>
+                <td>푸바오</td>
+                <td>어제</td>
+                <td>1343</td>
+                <td>32451564</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

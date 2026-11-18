@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <style>
+        .area{
+            width: 500px;
+            height: 100px;
+            border: 1px solid goldenrod;
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수 (function)</h1>
+
+    <!--
+        함수의 목적
+        1. 코드 재사용
+        2. 이벤트 핸들러(event handler) => 버튼을 누르면 "이거" 실행해(이거가 이벤트 핸들러)
+    -->
+
+    <pre>
+        function 함수명(매개변수) {
+            수행할 코드;
+            return 결과값;
+        }
+        요소.oneclick = function(){
+
+        }
+        const 변수명 = () => {
+
+        }
+    </pre>
+
+    <h3>매개변수를 가진 함수</h3>
+
+    <button onclick="fn(1)">버튼</button>
+    <button onclick="fn('문자열')">버튼</button>
+    <button onclick="fn([1,2,3])">버튼</button>
+    <button onclick="fn(alert('hi'))">버튼</button>
+    <button onclick="fn()">버튼</button>
+    <button onclick="fn(1,2,3,4,5)">버튼</button>
+
+    <script>
+        // ...매개변수 => 가변 매개변수 몇 개를 넘겨도 배열로 받음 => 자바 가변인자 int... 이렇게 있음
+        function fn(...value){
+            console.log(value);
+        }
+    </script>
+
+    <hr>
+
+    <button onclick="color(this)" id="btn1">버튼</button>
+    <button onclick="color(this)" id="btn2">버튼</button>
+
+    <script>
+        function changeColor1(){
+            document.querySelector(`#btn1`).style.color = "red";
+        }
+        function changeColor2(){
+            document.querySelector(`#btn2`).style.color = "red";
+        }
+
+        function change(value){
+            document.querySelector(`#btn${value}`).style.color = "red";
+        }
+
+        function color(e){
+            console.log(e);
+            e.style.color = "red";
+        }
+        // 선언적 함수를 호출부에서 this라는 키워드 인자를 전달하며 호출한다면
+        // 매개변수로는 이벤트가 발생한 요소객체 자기자신이 넘어오게됨
+    </script>
+
+    <hr>
+
+    <pre>
+        사용자게게 이름을 입력받아서
+        1~10사이의 행운의 숫자와 함께 출력을 해주는 함수
+    </pre>
+
+    <input type="text" id="name"> <br>
+    <button onclick="print()" id = "btn">입력완료</button>
+    <div id="area0" class="area"></div>
+
+    <script>
+        function print(){
+            const name = document.querySelector("#name").value;
+           // const num = parseInt(Math.random() + 10)+1;
+            const area0 = document.querySelector("#area0");
+            //area0.innerHTML = `${num}가 행운의 숫자`;
+            const fn = generateNum();
+            area0.innerHTML = fn(name);
+        }
+        function generateNum(){
+            const num = parseInt(Math.random() * 10)+1;
+
+            return function(name){ //클로저(Closure)
+                return `${name}님의 랜덤한 숫자 : ${num}`;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <button onclick="testFn()()">옛날코드</button>
+
+    <script>
+        function testFn(){
+            return function(){
+                alert("안녕")
+            };
+        }
+    </script>
+</body>
+</html>

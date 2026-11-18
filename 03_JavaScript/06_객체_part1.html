@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+        }
+        .area{
+            background-color: white;
+            color: black;
+            border: 1px solid #eee;
+            min-height: 200px;
+        }
+
+        div{
+            box-sizing: border-box;
+        }
+        #wrap{
+            width: 1200px;
+            min-height: 400px;
+            margin: auto;
+            box-shadow: 1px 2px 12px lightblue;
+        }
+        .card{
+            width: 230;
+            height: 360;
+            padding: 7px 7px 10px;
+            display: inline-block;
+
+            &:hover {
+                box-shadow: 1px 2px 6px lightgray;
+            }
+        }
+        .card img{
+            width: 100%;
+            height: 300px;
+        }
+        .card h4{
+            font-weight: 600;
+            font-size: 17px;
+            margin: 4px 0;
+        }
+        .card p{
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <p>
+        속성(property) : 값(value) 쌍을 모아둔 자료구조 <br>
+        자바로 따지면 => Map / DTO / VO <br><br>
+
+        - 중괄호 { }로 선언 <br>
+        - 안에 속석명 : 값을 쉼표로 나열 <br>
+        - 값은 모든 자료형 가능(문자, 숫자, 배열, 객체, 함수)
+    </p>
+
+    <div id="area" class="area"></div>
+    <button onclick="createObj()">객체만들기</button>
+
+    <script>
+        function createObj(){
+            // /*
+            //     WEBTOON TABLE
+            //     WEBTOON_NO / WEBTOON_NAME / WEBTOON_AUTHOR / THUMBNATL / COOKIE
+            //     ---------------------------------------------------------------
+            //         6     /   샤MONEY즘   /    나락        /  https:~  /    3
+
+            //     SELECT 
+            // */
+
+            // const shamoneysm = [6, "샤money" , 나락, "https" , 3];
+
+            // const area = document.querySelector("#area");
+            // area.innerHTML = `제목 : ${shamoneysm[1]}<br>
+            //                   작가 : ${shamoneysm[2]}<br>`
+
+            const webtoon = {
+                webtoonNo : 6,
+                webtoonName : "토커",
+                webtoonAuthor : "H8",
+                thumbnail: "https://image-comic.pstatic.net/webtoon/855950/thumbnail/titledescimage/frontImage_aed9389a-d558-40cc-ae89-d8125b074a79.png",
+                cookie: 3,
+            };
+
+            console.log(webtoon);
+            const area = document.querySelector('#area');
+            area.innerHTML = `이름 : ${webtoon.webtoonName} <br>
+                              작가 : ${webtoon.webtoonAuthor} <br>
+                              이미지 URL : ${webtoon["thumbnail"]} <br>
+                              쿠키 : ${webtoon.cookie}`;
+        }
+    </script>
+
+    <hr>
+
+    <div id="wrap"></div>
+    <button onclick="selectWebtoon()">웹툰뭐있지</button>
+
+    <script>
+        // 버튼을 클릭하면 서버로 요청이 간다고 가정
+        function selectWebtoon(){
+            const webtoons = [
+                {
+                    img : "https://image-comic.pstatic.net/webtoon/856184/thumbnail/titledescimage/frontImage_6f3da904-fe82-4e1d-8c8f-2142b671b9c8.png",
+                    title : "살아남은 너를 찬미하며",
+                    author : "화음 / 우지혜"
+                },
+                {
+                    img : "https://image-comic.pstatic.net/webtoon/856192/thumbnail/titledescimage/frontImage_ba267db7-d49e-4393-ab6a-9c8442640a89.png",
+                    title : "거짓말은 대담하게",
+                    author : "박태욱"
+                },
+                {
+                    img : "https://image-comic.pstatic.net/webtoon/856241/thumbnail/titledescimage/frontImage_f387e6c3-b79f-4765-a69e-cffb23061689.png",
+                    title : "이 남자는 수리가 필요",
+                    author : "장채산 / 윤유은"
+                },
+                {
+                    img : "https://image-comic.pstatic.net/webtoon/856758/thumbnail/titledescimage/frontImage_f546cf74-82a8-465c-820e-154b821da23a.png",
+                    title : "운명의 청바지",
+                    author : "만보"
+                }
+            ];
+            // 나중엔 이 배열이 서버에서 날아옴(응답 AJAX). 지금은 직접 만듦
+            console.log(webtoons);
+
+            /*
+            let el = "";
+            for(let w of webtoons){
+                el += `<div class="card">
+                        <img src="${w.img}" />
+                        <h4>${w.title}</h4>
+                        <p>${w.author}</p>
+                        </div>`;
+            }
+            console.log(el);
+            */
+            
+            const el = webtoons.map((w) => `<div class="card">
+                                            <img src="${w.img}" alt="웹툰 썸네일" />
+                                            <h4>${w.title}</h4>
+                                            <p>${w.author}</p>
+                                            </div>`
+                                            ).join('');
+
+            document.querySelector("#wrap").innerHTML = el;
+        }
+    </script>
+
+    <hr>
+
+    <h3>대괄호는?</h3>
+
+    <button onclick="second()">대괄호</button>
+
+    <script>
+        function second(){
+            const webtoon = {
+                "webtoon Nmae" : "캐슬",
+            };
+            console.log(webtoon["webtoon Nmae"]) // 공백 특수문자 같은게 포함되어있을 경우 [""]를 사용
+        }
+    </script>
+
+</body>
+</html>
