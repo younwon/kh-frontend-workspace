@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>제이쿼리</title>
+</head>
+<body>
+    <h1>jQuery란?</h1>
+
+    <pre>
+        브라우저의 조작
+        자바스크립트만으로는(옛날얘기) 브라우저마다 각기 다른 코드를 작성해서
+        조작해야하는 어려움이 있었다(옛날얘기)
+        존 레식은 이런 문제를 해결하기 위해 JavaScript라는 언어를 이용해서
+        함수 모음집을 만들어서 배포했다.
+        이것이 바로 jQuery라는 라이브러리인것이다!!!
+
+        사람들이 많이 사용하는 JavaScript함수 모음집 == jquery
+
+        Q. 왜이렇게 열광했나요
+        DOM과 관련된 스크립트 코드를 아주 쉽게 구현할 수 있었음
+        AJAX, 이벤트 처리를 아주 쉽게 구현할 수 있었음
+        jQuery와 관련된 확장 플러그인, OpenAPI등이 많이 지원ㄸ됐었음
+
+        단점 => 바닐라 자바스크립트 대비 속도가 너무 느림, 신규 개발엔 사용안됨
+    </pre>
+
+    <a href="http://jquery.com" target="_blank">제이쿼리</a>
+
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+
+    <h3>jQuery사용해보기</h3>    
+
+    <pre>
+        우리는 jQuery를 사용해서 DOM요소 객체를 다룰 예정 <br>
+        jQuery코드가 문서상 모든 요소들이 전부 다 로드된 후에 실행할 수 있게끔 작업
+        window.onload => 페이지가 전부 다 로딩되고 나서 자동으로 "딱 한 번" 수행
+    </pre>
+
+    <hr>
+
+    <pre>
+        - jQuery에서는 해당 내용을 세가지 구문으로 제공해서 해결
+        
+        1. 
+        jQuery(document).ready(function(){
+            실행하고 싶은 내용;
+        });
+
+        2. $: jQuery키워드를 나타냄
+        $(document).ready(function(){
+            실행하고싶은 내용;
+        });
+
+        3. $(fucntion(){
+            실행하고싶은 내용;
+        });
+    </pre>
+
+    <script>
+        $(function(){
+            console.log("안녕하세요")
+        });
+        $(function(){
+            console.log("반가워요")
+        });
+        $(function(){
+            console.log("잘가요")
+        });
+
+        $(function(){
+            const li = document.querySelectorAll("li");
+            
+            //-----------------------------------
+            //접근선택
+            //$('선택자')
+            //console.log($("li"));
+            $("li").css("color", "red").html("이렇게써라").click(function(){
+                console.log("클릭하셨습니다")
+            });
+            //$("li").html("바꾸고싶은값");
+            // innerText => .text()
+            // 프로퍼티 바꾸고싶다 => .prop()
+            // 클릭이벤트 달고싶은데 => .click()
+            // input요소 value속성값 필요한데 => .val()
+            
+        });
+
+    </script>
+
+    <hr>
+
+    <h4>글자수세기</h4>
+
+    <div style="border: 1px solid black; padding: 20px;">
+        <br>
+        200자 이내로 입력 <br>
+        <hr>
+        <textarea id="content" cols="40" rows="10" style="resize: none" maxlength="200"></textarea>
+        <hr>
+        <br>
+        <span id="count">0</span>/200
+        <br>
+        
+    </div>
+
+    <script>
+        $(function(){
+            $("#content").keyup(e => {
+                console.log(e.target.value.length);
+                $("#count").text(e.target.value.length);
+            });
+        })
+    </script>
+
+    //숙제 : 구글에 공공데이터포털 검색 후 가입해 오기
+</body>
+</html>

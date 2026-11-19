@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+        .area{
+            background-color: beige;
+            height: 100px;
+        }
+        .style{
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+
+    <pre>
+        * 용어 정리
+        event          : 브라우저에서 발생하는 사건(클릭, 입력, 스크롤...등)
+        event target   : 이벤트가 일어난 요소(button, div, input, ...등)
+        event type     : 이벤트 종류(click, dblclick, mouseover, keydown, submint ...등)
+        event listener : 이벤트를 감지하고 있다가 발생하면 Handler를 실행시키는 도구
+        event handler  : 이벤트가 발생했을 때 실행할 코드 뭉치(함수)
+
+        * 이벤트 거는 방법 3가지
+        1. 인라인 이벤트 모델 => <요소 onclick="함수();">
+        2. 고전 이벤트 모델   => 요소.onclick = 함수
+        3. 표준 이벤트 모델   => 요소.addEventListener("type", 함수)
+                                *권장사항 : 표준 이벤트 모델을 사용할 것
+
+    </pre>
+
+    <hr>
+
+    <h3>2. 고전 이벤트 모델</h3>
+
+    <pre>
+        요소의 이벤트 속성에 함수 대입 <br>
+        요소.onclick = () => { 어쩌고 };
+        <br>
+        null대입하면 이벤트 제거됨
+    </pre>
+
+    <button id="btn-1">버튼1</button><button id="btn-2">버튼2</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        const btn1 = document.querySelector("#btn-1");
+        const area1 = document.getElementById("area1");
+
+        // btn1: event target이라 부름 / onclick : event type이라 부름 / funtion : event handler라고 부름
+        btn1.onclick = function () {
+            area1.innerHTML += `btn1 클릭<br>`;
+        };
+
+        document.getElementById("btn-2").onclick = () => {
+            btn1.onclick = null;
+            area1.innerHTML = "이벤트 제거";
+        };
+
+    </script>
+
+    <h3>3. 표준 이벤트 모델 => addEventListener</h3>
+
+    <pre>
+        요소.addEventListener("event type", event handler);
+
+        - 제거 : removeEventListener
+    </pre>
+
+    <button id="btn-3">버튼</button>
+
+    <script>
+        const btn = document.querySelector("#btn-3");
+
+        btn.addEventListener("click", () => {
+            alert("표준 이벤트 모델 테스트");
+        });
+
+        btn.addEventListener("mouseenter", () => {
+            btn.classList.add("style");
+        });
+
+        btn.addEventListener("mouseout", () => {
+            btn.classList.remove("style");
+        });
+    </script>
+
+    <hr>
+
+    <button onclick="fn1(this)">인라인</button>
+    <div id="btn4">고전</div>
+    <div id="btn5">표준</div>
+
+    <script>
+        function fn1(e){
+            e.innerHTML = "클릭됨"
+        };
+
+        document.querySelector("#btn4").onclick = (e) =>{
+            console.log(e.target);
+        };
+
+        document.querySelector("#btn5").onclick = (e) =>{
+            console.log(e.target);
+        };
+
+        // 옛날코드엔 window.event.target이라고 적혀있는 경우가 있음 옛날코드
+    </script>
+
+    <hr>
+
+    <h3>태그에 기본으로 달려있는 이벤트 막기!!!</h3>
+
+    <p>
+        - form태그 내부의 submit 버튼 : action속성의 value값으로 URL 요청 <br> 
+        - a : 클릭 시 href로 URL 요청
+    </p>
+    <hr>
+
+    <a href="http://www.naver.com" target="_blank">네이버이동</a>
+    <a href="http://www.naver.com" target="_blank" onclick="alert('123')">네이버로</a>
+
+    <a href="http://www.naver.com" onclick="return false;">네이버이동</a>
+    <a href="http://www.naver.com" onclick="return returnFn()">네이버이동</a>
+
+    <script>
+        function returnFn(){
+            const num = 1;
+            if (num === 1){
+                return false;
+            }
+        }
+    </script>
+
+    <hr>
+
+    <h3>유효성검증</h3>
+
+    <!-- USER ID VARCHAR2(15) UNIQUE NOT NULL -->
+    <form action="회원가입URL">
+        <fieldset>
+            <legend>회원가입</legend>
+
+            아이디 : <input type="text" name="userId" id="userId"> <br>
+            <label style="font-size: 10px; color: #6b6b6b;">
+                영문자 또는 숫자로만 5 ~ 12자 사이로 입력해주세요
+            </label>
+            <br><br>
+
+            <button type="submit" onclick="return validate()">가입하기</button>
+        </fieldset>
+    </form>
+
+    <script>
+        function validate(){
+            const userId = document.querySelector("#userId").value;
+
+            /*
+            if(5 <= userId.length && userId.length <= 12){
+                for(let i = 0; i < userId.length; i++){
+                    userId.charAt(i) >= 'a' && userId.charAt(i) <= 'z' ||
+                    userId.charAt(i) >= 'A' && userId.charAt(i) <= 'Z' ||
+                    userId.charAt(i) >= '0' && userId.charAt(i) <= '9'
+                }
+                return true;
+            }
+            */
+
+            const regExp = /^[A-Za-z0-9]{5,12}$/; //정규표현식
+
+            if(regExp.test(userId)){
+                return true;
+            }
+
+            return false;
+        }
+    </script>
+
+</body>
+</html>

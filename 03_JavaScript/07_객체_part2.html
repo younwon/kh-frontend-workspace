@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체2</title>
+    <style>
+        .area{
+            background-color: lemonchiffon;
+            border: 1px solid pink;
+            min-height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h3>생성자</h3>
+
+    <button onclick="con()">생성해야지</button>
+    
+    <script>
+        function con(){
+            // 생성자 함수
+            function Webtoon(title, author, img) {
+
+                /*
+                this = {
+                    title : "캐슬",
+                    autohr : "정연",
+                    img : "이미지경로"
+                };
+
+                return this;
+                
+                생략됨*/
+
+                this.title = title;
+                this.author = author;
+                this.img = img;
+            }
+
+            const web1 = new Webtoon("캐슬", "정연", "이미지");
+            const web2 = new Webtoon("캐슬2", "정연2", "이미지경로");
+            console.log(web1);
+            console.log(web2);
+        }
+    </script>
+
+    <hr>
+
+    <h3>Date객체</h3>
+
+    <button onclick="dateFn()">날짜 사용</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function dateFn(){
+            const area = document.querySelector("#area1");
+
+            const date1 = new Date();
+            area.innerHTML = `현재 : ${date1} <br>`;
+
+            const date2 = new Date(2027, 4-1, 16);
+            area.innerHTML = `종강일 : ${date2} <br>`;
+
+            const date3 = new Date(2027, 4-1, 1, 16,11, 50, 0);
+            area.innerHTML = `종강일 : ${date3} <br>`;
+
+            area.innerHTML = `종강일까지 남은 시간 : ${date2 - date1} <br>`;
+
+            const dDay = (date2 - date1) / (24*60*60*1000);
+            alert(`종강까지 ${Math.ceil(dDay)}`);
+
+            area.innerHTML = `
+                                ${date1.getFullYear()}년 <br>
+                                ${date1.getMonth() + 1}월 <br>
+                                ${date1.getDate()}일 <br>
+                                ${date1.getDay()}요일 <br>
+                                ${date1.getHours()}시 <br>
+                                ${date1.getMinutes()}분 <br>
+                                ${date1.setSeconds()}초 <br>
+                             `;
+        }
+    </script>
+
+    <h2>window</h2>
+
+    <hr>
+
+    <h4>브라우저에서 자체적으로 제공하는 객체 => BOM, DOM</h4>
+
+    <p>
+        Node.js : 자바스크립트 살행환경 <br>
+        ---------------------------------------------------------------
+        - BOM(Browser Object Moder) : 브라우저 => window, location, screen, navigator..등 <br><br>
+
+        - DOM(Document Object Model) : HTML문서 => document <br>
+        JS언어 자체엔 없고 브라우저가 끼워팔기 해주는 애들
+    </p>
+
+    <hr>
+
+    <h2>window</h2>
+
+        <button onclick="openFn()" >옛날</button>
+        <button onclick="timeout()">얍</button>
+    <script>
+        function openFn(){
+            window.open("https://www.naver.com", "naver", "width=500, height=500, left=100, top=100");
+        };
+        
+        function timeout(){
+            const newWin = open();
+            newWin.alert("안전한 놀이터 지금 가입하면 만원 지금");
+
+            //newWin.close();
+
+            newWin.document.write("지금부터 비밀번호는 3542657545324")
+
+            setTimeout(() => {
+                newWin.close();
+            }, 3000)
+        }
+    </script>
+
+    <h3>setInterval</h3>
+
+    <button onclick="timer()">시계만들기</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function timer(){
+            const area = document.querySelector("#area2");
+
+            setInterval(() => {
+                const date = new Date();
+                const hour = date.getHours();
+                const min = date.getMinutes();
+                const sec = date.getSeconds();
+
+                /*
+                if(sec < 10){
+                    area.innerHTML = `${hour} : ${min} : 0${sec}`;
+                } else{
+                    area.innerHTML = `${hour} : ${min} : ${sec}`;
+                }
+                */
+
+                area.innerHTML = `${hour} : ${min} : ${sec < 10 ? "0" + sec : sec}`;
+            }, 1000);
+        }
+
+        // 멈추려면 => const변수명 = setInterval(...); clearInterval(변수명);
+    </script>
+
+    <h3>screen / navigator</h3>
+
+    <button onclick="console.log(screen)">들 중요(모니터)</button>
+    <button onclick="console.log(navigator)">한 이총사(브라우저)</button>
+
+    <hr>
+
+    <h3>location</h3>
+
+    <button onclick="console.log(location)">자주 사용함</button>
+    <a href="https://www.naver.com/">눌러</a>
+    <button onclick="loc()">네이버로 이동</button>
+    <button onclick="location.reload()">새로고침</button>
+    <button onclick="location.href = location.href">새로고침은 이거와 같다</button>
+
+    <script>
+        function loc(){
+            location.href = "https://www.naver.com/";
+        }
+    </script>
+
+    <hr>
+
+    <h2>DOM => 직접 요소 만들기</h2>
+
+    <p>
+        - 요소노드(Element Node) : 태그 <br />
+        - 텍스트 노드(Text Node) : 태그 안의 글자 <br>
+        빈 태그(input, img, br)는 텍스트 노드 없음
+    </p>
+    
+    <div id="area3" class="area"></div>
+    <button onclick="addEl()">버튼</button>
+
+    <script>
+        function addEl(){
+            const userId = '홍길동'; // 서버에서 받아온 갑이라고 침
+
+            //방법1
+            //document.querySelector("#area3").innerHTML = `<h4>${userId}</h4>`;
+
+            // document가 제공하는 메소드로 "요소 객체" 만들기
+
+            //방법2
+            const h4 = document.createElement("h4");
+            console.log(h4);
+            const text = document.createTextNode(userId);
+            console.log(text);
+            h4.appendChild(text);
+
+            //document.querySelector("#area3").innerHTML = h4;
+            document.querySelector("#area3").appendChild(h4);
+
+            /*
+            방법 1의 경우 innerHTML 안의 내용을 통째로 다시르림
+            요소 1000개면 1000개를 싹다 다시 그림
+            
+            방법 2는 그냥 하나만 추가
+
+            성능이 차이난다
+            */
+        }
+    </script>
+</body>
+</html>

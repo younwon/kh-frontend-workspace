@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <style>
+        body{
+            padding-bottom: 600px;
+        }
+        .area{
+            background-color: lightgoldenrodyellow;
+            padding: 8px
+        }
+    </style>
+</head>
+<body>
+    <h1>정규표현식(Regular Expression)</h1>
+
+    <p>
+        특정 패턴의 문자열을 찾거나 바꿀 때 사용하는 형식 언어
+        if문 / for문 없이 한 줄로 검사 가능 <br>
+        JS뿐 아니라 자바(String.matches()), 오라클(REGEXP_LIKE)에서도 똑같이 사용가능!!
+    </p>
+
+    <h3>정규식 객체 만들기 + test()</h3>
+
+    <div id="area1" class="area"></div>
+    <button onclick="test1()">정규표현식 알아보기</button>
+
+    <script>
+        function test1(){
+            let regExp = new RegExp("kh");
+            regExp = /kh/;
+            console.log(regExp);
+
+            /*
+                정규식객체 메소드
+
+                ★
+                test(문자열) : 패턴에 맞는게 있다면 true / 없다면 false => 검증은 이거 하나로 끝
+                const regExp = /^[a-zA-Z0-9]${5,12}/;
+                regExp.test("사용자가 입력한 아이디 값")
+
+                exec(문자열) : 처음 매칭된 문자열 / 없다면 null
+                string메소드 => match(정규식) : 일치하는 값 반환
+                               search(정규식) : 일치하는 시작 인덱스 / 없다면 -1
+                               replace(정규식, 값) : 일치하는 첫 번째를 값으로 바꿔서 반환
+            */
+
+            const str = 'amazon gogle apple kh samsung lg taobao';
+            const area = document.querySelector("#area1");
+
+            area.innerHTML = `${regExp.test(str)} <br>
+                             ${regExp.test("asdkfjlasjf")}`;
+        }
+    </script>
+
+    <hr>
+
+    <h2>2. 메타문자 => 패턴을 만드는 기호들</h2>
+
+    <div id="area2" class="area"></div>
+    <button onclick="test2()">메타문자</button>
+
+    <script>
+        function test2(){
+            const area = document.querySelector("#area2");
+            const str = 'javascript jquery ajax'
+            let regExp;
+
+            //기본 글자 => 포함되어있는가?
+            regExp = /a/;
+            
+            // ^ : 시작
+            regExp = /^j/; // j로 시작하는가?
+
+            // $ : 끝
+            regExp = /x$/; // x로 끝나는가?
+
+            // ^패턴$ : 시작부터 끝까지 정확히
+            regExp = /^jx$/; // jx인가?
+
+            //[] : 안에 있는 글자 중 하나
+            regExp = /[abc]/; // a 또는 b 또는 c가 하나라도
+
+            // 첫글자가 j 또는 s 또는 a로 시작하는가
+            // if(str.charAt(0) == 'j' || star.charAt(0) == '%' \|| str.charAt(0) == 'a') /^[jsa]/
+            regExp = /^[jsa]/;
+            area.innerHTML += `${regExp.test(str)} <br>`;
+            
+            // [] 안에 범위
+            // 사용자의 입력값이 숫자인지 판별
+            //[]1243] => [1-9]
+            // [a-z] , [A-Z] , [ㄱ-ㅎ ㅏ-ㅣ 가-힣]
+            // . : 아무 글자 한개(줄바꿈 패고)
+            // + : 앞 글자가 1개 이상
+            // ? : 0글자 또는 1글자
+            // {6} : 정확히 6개
+            // {2,5} : 2개 이상 5개 이하
+            // {2,} : 2개 이상
+            regExp = /^[0-9]+$/;
+
+            /*
+                플래그 / 패턴/ 뒤에붙는다
+                i : 대소문자 구분 안함
+                g : 전역
+                m : 여러줄 각각 검사
+            */
+            console.log("JavaScript jQuery AJAX".replace(/a/gi, "ㅋ"));
+        }
+    </script>
+
+    <hr>
+
+    <h3>예제</h3>
+
+    <button onclick="test3">검사</button>
+
+    <script>
+        function test4(){
+            const num = "301003-343534";
+
+            // 주만번호의 형식 : 생년월일(6자리)-성별(1~4)지역랜덤값(7자리)
+
+            let regExp;
+            // 글자수체크
+            regExp = /^......-.......$/;
+
+            // 숫자
+            regExp = /^[0-9][0-9][0-9][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+
+            /*
+                축약용 메타문자
+                \d : 숫자 == [0-9]
+                \D : 숫자 제외 전부
+                \w : 영문자, 숫자, _ == [a-zA-Z0-9_]
+                \W : \w제외 전부
+                \s : 공백(스페이스, 탭, 개행)
+                \S : 공백 제외 전부
+            */
+            // 축약
+            regExp = /^\d{6}-[1-4]\d{6}$/;
+
+            // 4단계 날짜 제한
+            regExp = /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])-[1-4]\d{6}$/;
+        }
+    </script>
+
+
+</body>
+</html>

@@ -174,5 +174,71 @@
         }
     </script>
 
+    <hr>
+
+    <button onclick="loop()">버튼</button>
+
+    <script>
+        function loop(){
+            const human = {
+                name: "홍길동",
+                age: 15,
+                address: "한양,"
+            }
+
+            for(let k in human){
+                console.log(k + ":" + human[k]);
+            }
+        }
+    </script>
+
+    <hr>
+
+    <button onclick="method()">메소드 버튼</button>
+    <div id="area2" class="area"></div>
+
+    <script>
+        function method(){
+            const name = "박윤원";
+
+            const arma = {
+                name : "야라",
+                kind : "야라마딜로",
+                circle : function(){ // method property
+                    alert(`${this.name}가 둥글게 몸을 만다`);
+                },
+                toString : function() {
+                    return `이름 : ${this.name} <br>
+                            종   : ${this.kind} <br>`;
+                }
+            };
+
+            arma.circle();
+            const area2 = document.querySelector("#area2");
+            area2.innerHTML = arma;
+            console.log(arma);
+
+            console.log("name" in arma);
+            console.log("age" in arma);
+        }
+    </script>
+
+    <hr>
+
+    <button onclick="addProperty()">속성추가</button>
+
+    <script>
+        function addProperty(){
+            const arma = {};
+
+            arma.name = "야르";
+            arma.age = 15;
+
+            arma.age = 20;
+            delete arma.age;
+
+            console.log(arma);
+        };
+    </script>
 </body>
 </html>
