@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>페이지실습</title>
+</head>
+<body>
+    <!-- 
+    게시글 제목 : data_title
+    저연구분 : category_name1
+    첨부파일 : fileurl1~5
+    게시글 : data_content 
+    -->
+    <h2>경삼남도 자연관광</h2>
+
+    <div id="nature"></div>
+    <button onclick="showMe()">자연관광 보여줘</button>
+
+    <script>
+        let pageNo = 1;
+        function showMe(){
+            $.ajax({
+                url : `https://apis.data.go.kr/6480000/gyeongnamtournature/gyeongnamtournaturelist?serviceKey=4f8f2fc1680492ab1b09d5b50ce274fb42c0b045b7cf3908cffce58b2239b688&pageNo=${pageNo++}&numOfRows=10&resultType=json`,
+                dataType : "json",
+                success : (result) => {
+                    console.log(result);
+                    const item = result.gyeongnamtournaturelist.body.items.item[0];
+                    console.log(item);
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>
